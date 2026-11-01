@@ -278,205 +278,67 @@
 
 
 
-<style>
-    
     /* ==================================================
+
        PILIHAN TEMA WARNA TAMPILAN (THEMES)
+
        ================================================== */
+
     /* 1. Default Dark (Midnight Slate Bawaan) */
+
     body.theme-default {
+
       background: radial-gradient(circle at top right, #0f172a, #020617) !important;
+
     }
+
+
 
     /* 2. Tema Biru Campuran (Ocean Deep) */
+
     body.theme-ocean {
+
       background: radial-gradient(circle at top right, #0a192f, #020c1b) !important;
+
     }
+
     body.theme-ocean aside {
+
       background-color: #0b1e36 !important;
+
       border-color: rgba(30, 58, 138, 0.4) !important;
+
     }
+
     body.theme-ocean main {
+
       background-color: #061224 !important;
+
     }
+
     body.theme-ocean header {
+
       background-color: rgba(11, 30, 54, 0.9) !important;
+
       border-color: rgba(30, 58, 138, 0.5) !important;
+
     }
+
     body.theme-ocean .bg-slate-900 {
+
       background-color: #0f2744 !important;
+
       border-color: rgba(30, 58, 138, 0.4) !important;
+
     }
 
-    /* 3. Tema Transparan (Background Putih Bersih & Kotak Kategori Ungu) */
-    body.theme-transparent {
-      background: #ffffff !important;
-      color: #0f172a !important;
-    }
-    
-    body.theme-transparent aside {
-      background-color: #f8fafc !important;
-      border-right: 1px solid #e2e8f0 !important;
-    }
-    
-    body.theme-transparent main {
-      background-color: #f8fafc !important;
-    }
-    
-    body.theme-transparent header {
-      background-color: rgba(255, 255, 255, 0.95) !important;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e2e8f0 !important;
-    }
-    
-    /* Kartu / Kotak Konten Utama menjadi Putih dengan Bayangan Elegan */
-    body.theme-transparent .bg-slate-900 {
-      background-color: #ffffff !important;
-      border: 1px solid #e2e8f0 !important;
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
-      color: #0f172a !important;
-    }
-
-    /* Memaksa SEMUA teks menjadi hitam atau gelap pekat */
-    body.theme-transparent h1, 
-    body.theme-transparent h2, 
-    body.theme-transparent h3, 
-    body.theme-transparent h4, 
-    body.theme-transparent th,
-    body.theme-transparent td,
-    body.theme-transparent label,
-    body.theme-transparent span,
-    body.theme-transparent p {
-      color: #0f172a !important;
-    }
-
-    /* KOTAK KATEGORI ASET: Berubah dari Abu-abu menjadi Ungu + Teks Putih */
-    body.theme-transparent #kategori-container > div,
-    body.theme-transparent div[class*="bg-slate-800/60"] {
-      background-color: #7c3aed !important;
-      border: 1px solid #6d28d9 !important;
-      color: #ffffff !important;
-    }
-    body.theme-transparent #kategori-container > div p,
-    body.theme-transparent #kategori-container > div h3 {
-      color: #ffffff !important;
-    }
-
-    /* Tabel agar kontras dan jelas */
-    body.theme-transparent table thead tr {
-      background-color: #f1f5f9 !important;
-      color: #0f172a !important;
-    }
-    body.theme-transparent table tbody tr {
-      border-bottom: 1px solid #f1f5f9 !important;
-      color: #1e293b !important;
-    }
-    body.theme-transparent table tbody tr:hover {
-      background-color: #f8fafc !important;
-    }
-
-    /* Kolom Input, Select, & Textarea */
-    body.theme-transparent input, 
-    body.theme-transparent select, 
-    body.theme-transparent textarea {
-      background-color: #f8fafc !important;
-      border: 1px solid #cbd5e1 !important;
-      color: #0f172a !important;
-    }
-
-    /* TOMBOL TEMA TRANSPARAN: Disamakan dengan tombol "Tambah Aset Baru" */
-    body.theme-transparent button:not(.bg-red-600):not([class*="emerald"]):not([class*="gradient"]), 
-    body.theme-transparent .btn-touch:not([class*="gradient"]) {
-      background: linear-gradient(to right, #2563eb, #06b6d4) !important;
-      color: #ffffff !important;
-      border: none !important;
-      transition: all 0.25s ease-in-out;
-    }
-
-    /* Saat kursor diarahkan (hover) ke tombol */
-    body.theme-transparent button:not(.bg-red-600):not([class*="emerald"]):not([class*="gradient"]):hover, 
-    body.theme-transparent .btn-touch:not([class*="gradient"]):hover {
-      background: #1d4ed8 !important;
-      color: #ffffff !important;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4) !important;
-    }
-
-    /* Memastikan ikon di dalam tombol tetap terlihat jelas dan berwarna putih */
-    body.theme-transparent button i, 
-    body.theme-transparent .btn-touch i {
-      color: #ffffff !important;
-    }
-
-    /* ==================================================
-       PENYESUAIAN TAMBAHAN TEMA TRANSPARAN
-       ================================================== */
-
-    /* 1. Mengubah area bawah sidebar (profil & tombol keluar) menjadi latar belakang putih */
-    body.theme-transparent aside div.border-t {
-      background-color: #ffffff !important;
-      border-color: #e2e8f0 !important;
-    }
-
-    /* 2. Memaksa kotak penunjuk waktu / tanggal menjadi gradasi biru + teks putih */
-    body.theme-transparent header div.bg-slate-800,
-    body.theme-transparent header div#current-timestamp,
-    body.theme-transparent header .fa-clock + span {
-      background: linear-gradient(to right, #2563eb, #06b6d4) !important;
-      border: none !important;
-      color: #ffffff !important;
-    }
-
-    body.theme-transparent header div.bg-slate-800 span,
-    body.theme-transparent header div.bg-slate-800 i,
-    body.theme-transparent header div#current-timestamp *,
-    body.theme-transparent header .fa-clock {
-      color: #ffffff !important;
-    }
-
-    /* Pengecualian: Kembalikan tombol ikon pada kolom Aksi tabel agar tetap seperti semula */
-    body.theme-transparent td button,
-    body.theme-transparent td button i {
-      background: none !important;
-      background-color: transparent !important;
-      box-shadow: none !important;
-      transition: opacity 0.2s ease-in-out;
-    }
-
-    body.theme-transparent td button:hover {
-      opacity: 0.75 !important;
-      background-color: transparent !important;
-      box-shadow: none !important;
-    }
-    /* Memaksa tombol atas agar konsisten dan memiliki jarak pembatas */
-    body.theme-transparent .flex.flex-wrap.items-center.justify-end.gap-2 button,
-    body.theme-transparent header button {
-      background: linear-gradient(to right, #2563eb, #06b6d4) !important;
-      color: #ffffff !important;
-      border: none !important;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1) !important;
-    }
-    
-    body.theme-transparent .flex.flex-wrap.items-center.justify-end.gap-2 button:hover,
-    body.theme-transparent header button:hover {
-      background: #1d4ed8 !important;
-      color: #ffffff !important;
-    }
-
-    /* Memaksa tombol ikon pada kolom AKSI tabel kembali transparan normal */
-    body.theme-transparent table td button,
-    body.theme-transparent table td button i {
-      background: transparent !important;
-      background-color: transparent !important;
-      box-shadow: none !important;
-      border: none !important;
-    }
-    
   </style>
-  
+
 </head>
 
 <body class="theme-default text-slate-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-white">
-  
+
+
 
   <!-- ==================== VIEW LOGIN (FULLSCREEN & REFRESHED) ==================== -->
 
@@ -800,11 +662,13 @@
 
           <div class="relative">
 
-           <select id="theme-selector" onchange="changeAppTheme(this.value)" class="bg-slate-800/90 text-slate-200 border border-slate-700/80 rounded-xl px-3 py-1.5 text-xs font-medium outline-none focus:ring-2 focus:ring-cyan-500 cursor-pointer">
-            <option value="default">🌙 1. Dark Default</option>
-            <option value="ocean">🌊 2. Mixed Blue (Ocean)</option>
-            <option value="transparent">✨ 3. White Modern</option> <!-- Tambahan Opsi 3 -->
-          </select>
+            <select id="theme-selector" onchange="changeAppTheme(this.value)" class="bg-slate-800/90 text-slate-200 border border-slate-700/80 rounded-xl px-3 py-1.5 text-xs font-medium outline-none focus:ring-2 focus:ring-cyan-500 cursor-pointer">
+
+              <option value="default">🌙 1. Dark Default</option>
+
+              <option value="ocean">🌊 2. Biru Campuran (Ocean)</option>
+
+            </select>
 
           </div>
 
@@ -2261,22 +2125,30 @@
 
     /* --- FUNGSI PILIHAN TEMA WARNA TAMPILAN --- */
 
-function changeAppTheme(themeName) {
-      document.body.classList.remove('theme-default', 'theme-ocean', 'theme-transparent');
+    function changeAppTheme(themeName) {
+
+      document.body.classList.remove('theme-default', 'theme-ocean', 'theme-skyline');
+
       document.body.classList.add('theme-' + themeName);
+
       localStorage.setItem('cbml_app_theme', themeName);
-      
+
     }
 
 
 
-   function initAppTheme() {
-      // Selalu set ke default setiap kali aplikasi dimulai / direfresh
-      const defaultTheme = 'default'; 
+    function initAppTheme() {
+
+      const savedTheme = localStorage.getItem('cbml_app_theme') || 'default';
+
       const selector = document.getElementById('theme-selector');
-      if (selector) selector.value = defaultTheme;
-      changeAppTheme(defaultTheme);
+
+      if (selector) selector.value = savedTheme;
+
+      changeAppTheme(savedTheme);
+
     }
+
 
 
     // Helper to format Date string
