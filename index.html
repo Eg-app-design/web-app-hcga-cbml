@@ -278,7 +278,9 @@
 
 
 
- /* ==================================================
+<style>
+    
+    /* ==================================================
        PILIHAN TEMA WARNA TAMPILAN (THEMES)
        ================================================== */
     /* 1. Default Dark (Midnight Slate Bawaan) */
@@ -415,33 +417,39 @@
       border-color: #e2e8f0 !important;
     }
 
-    /* 2. Mengubah kotak penunjuk Tanggal/Hari menjadi latar belakang biru + teks putih */
-    body.theme-transparent header div.bg-slate-800 {
+    /* 2. Memaksa kotak penunjuk waktu / tanggal menjadi gradasi biru + teks putih */
+    body.theme-transparent header div.bg-slate-800,
+    body.theme-transparent header div#current-timestamp,
+    body.theme-transparent header .fa-clock + span {
       background: linear-gradient(to right, #2563eb, #06b6d4) !important;
       border: none !important;
       color: #ffffff !important;
     }
 
     body.theme-transparent header div.bg-slate-800 span,
-    body.theme-transparent header div.bg-slate-800 i {
-      color: #ffffff !important;
-    }
-    /* Memaksa kotak penunjuk waktu / tanggal menjadi gradasi biru + teks putih pada tema transparan */
-    body.theme-transparent header div#current-timestamp,
-    body.theme-transparent header .fa-clock + span,
-    body.theme-transparent header div:has(#current-timestamp) {
-      background: linear-gradient(to right, #2563eb, #06b6d4) !important;
-      border: none !important;
-      color: #ffffff !important;
-    }
-    
+    body.theme-transparent header div.bg-slate-800 i,
     body.theme-transparent header div#current-timestamp *,
     body.theme-transparent header .fa-clock {
       color: #ffffff !important;
     }
+
+    /* Pengecualian: Kembalikan tombol ikon pada kolom Aksi tabel agar tetap seperti semula */
+    body.theme-transparent td button,
+    body.theme-transparent td button i {
+      background: none !important;
+      background-color: transparent !important;
+      box-shadow: none !important;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    body.theme-transparent td button:hover {
+      opacity: 0.75 !important;
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
     
   </style>
-
+  
 </head>
 
 <body class="theme-default text-slate-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-white">
