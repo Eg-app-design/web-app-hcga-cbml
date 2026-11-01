@@ -332,64 +332,66 @@
 
     }
 
-    /* 3. Tema Transparan (Glassmorphism & Tombol Interaktif Hover) */
+   /* 3. Tema Transparan (Gaya Neumorphism Terang & Interaksi Tombol) */
     body.theme-transparent {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%) !important;
+      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%) !important;
+      color: #1e293b !important;
     }
+    
     body.theme-transparent aside {
-      background-color: rgba(15, 23, 42, 0.65) !important;
+      background-color: rgba(255, 255, 255, 0.75) !important;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-color: rgba(255, 255, 255, 0.08) !important;
+      border-color: rgba(255, 255, 255, 0.4) !important;
     }
+    
     body.theme-transparent main {
-      background-color: rgba(2, 6, 23, 0.5) !important;
+      background-color: rgba(241, 245, 249, 0.6) !important;
     }
+    
     body.theme-transparent header {
-      background-color: rgba(15, 23, 42, 0.75) !important;
+      background-color: rgba(255, 255, 255, 0.8) !important;
       backdrop-filter: blur(10px);
-      border-color: rgba(255, 255, 255, 0.08) !important;
+      border-color: rgba(255, 255, 255, 0.4) !important;
     }
-    body.theme-transparent .bg-slate-900 {
-      background-color: rgba(30, 41, 59, 0.55) !important;
+    
+    body.theme-transparent .bg-slate-900,
+    body.theme-transparent div[class*="bg-slate-900"] {
+      background-color: rgba(255, 255, 255, 0.65) !important;
       backdrop-filter: blur(10px);
-      border-color: rgba(255, 255, 255, 0.08) !important;
+      border: 1px solid rgba(255, 255, 255, 0.8) !important;
+      box-shadow: 8px 8px 20px rgba(163, 177, 198, 0.4), -8px -8px 20px rgba(255, 255, 255, 0.8) !important;
+      color: #0f172a !important;
     }
 
-    /* Efek Tombol Khusus Tema Transparan: Biru saat kursor mendekat (hover), teks awal biru berubah jadi putih */
-    body.theme-transparent button:not([class*="bg-"]), 
-    body.theme-transparent .btn-interactive {
-      color: #38bdf8; /* Warna teks awal biru */
-      transition: all 0.25s ease-in-out;
-    }
-    body.theme-transparent button:not([class*="bg-"]):hover,
-    body.theme-transparent .btn-interactive:hover {
-      background-color: #2563eb !important; /* Warna latar tombol menjadi biru saat kursor diarahkan */
-      color: #ffffff !important;           /* Teks berubah menjadi putih saat kursor diarahkan */
-      border-color: #3b82f6 !important;
+    body.theme-transparent h1, 
+    body.theme-transparent h2, 
+    body.theme-transparent h3, 
+    body.theme-transparent h4, 
+    body.theme-transparent p, 
+    body.theme-transparent span {
+      color: #0f172a !important;
     }
 
-    /* Efek hover tombol khusus HANYA saat body menggunakan tema transparan */
-    body.theme-transparent button, 
-    body.theme-transparent .btn-touch, 
-    body.theme-transparent a[class*="bg-"] {
-      transition: all 0.25s ease-in-out;
+    /* Efek Tombol: Teks awal biru, saat kursor diarahkan (hover) background jadi biru & teks jadi putih */
+    body.theme-transparent button:not(.bg-red-600):not([class*="emerald"]), 
+    body.theme-transparent .btn-touch {
+      color: #2563eb !important;
+      transition: all 0.3s ease-in-out;
     }
 
-    /* Saat kursor diarahkan (hover) pada tema transparan */
-    body.theme-transparent button:hover, 
+    body.theme-transparent button:not(.bg-red-600):not([class*="emerald"]):hover, 
     body.theme-transparent .btn-touch:hover {
-      background-color: #2563eb !important; /* Latar belakang menjadi biru terang */
-      color: #ffffff !important;           /* Teks berubah menjadi putih */
-      border-color: #3b82f6 !important;    /* Border tombol menyesuaikan */
+      background-color: #0284c7 !important; /* Warna biru tombol saat kursor di atasnya */
+      color: #ffffff !important;           /* Teks berubah menjadi putih bersih */
+      border-color: #0ea5e9 !important;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4) !important;
     }
 
-    /* Jika tombol memiliki ikon di dalamnya, ikon ikut berubah menjadi putih */
     body.theme-transparent button:hover i, 
     body.theme-transparent .btn-touch:hover i {
       color: #ffffff !important;
     }
-
   </style>
 
 </head>
