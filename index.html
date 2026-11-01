@@ -382,22 +382,26 @@
       color: #0f172a !important;
     }
 
-    /* TOMBOL AKSI: Warna normal, HANYA BERUBAH BIRU + TEKS PUTIH SAAT KURSOR DIARAHKAN (HOVER) */
-    body.theme-transparent button:not(.bg-red-600):not([class*="emerald"]), 
-    body.theme-transparent .btn-touch {
+    /* TOMBOL TEMA TRANSPARAN: Disamakan dengan tombol "Tambah Aset Baru" */
+    body.theme-transparent button:not(.bg-red-600):not([class*="emerald"]):not([class*="gradient"]), 
+    body.theme-transparent .btn-touch:not([class*="gradient"]) {
+      background: linear-gradient(to right, #2563eb, #06b6d4) !important;
+      color: #ffffff !important;
+      border: none !important;
       transition: all 0.25s ease-in-out;
     }
 
-    body.theme-transparent button:not(.bg-red-600):not([class*="emerald"]):hover, 
-    body.theme-transparent .btn-touch:hover {
-      background-color: #2563eb !important;
+    /* Saat kursor diarahkan (hover) ke tombol */
+    body.theme-transparent button:not(.bg-red-600):not([class*="emerald"]):not([class*="gradient"]):hover, 
+    body.theme-transparent .btn-touch:not([class*="gradient"]):hover {
+      background: #1d4ed8 !important;
       color: #ffffff !important;
-      border-color: #1d4ed8 !important;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4) !important;
     }
 
-    body.theme-transparent button:hover i, 
-    body.theme-transparent .btn-touch:hover i {
+    /* Memastikan ikon di dalam tombol tetap terlihat jelas dan berwarna putih */
+    body.theme-transparent button i, 
+    body.theme-transparent .btn-touch i {
       color: #ffffff !important;
     }
     
