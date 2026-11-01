@@ -332,66 +332,80 @@
 
     }
 
-   /* 3. Tema Transparan (Gaya Neumorphism Terang & Interaksi Tombol) */
+   /* 3. Tema Transparan (Gaya Terang & Neumorphism seperti contoh) */
     body.theme-transparent {
-      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%) !important;
+      background: #e2e8f0 !important;
       color: #1e293b !important;
     }
     
     body.theme-transparent aside {
-      background-color: rgba(255, 255, 255, 0.75) !important;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-color: rgba(255, 255, 255, 0.4) !important;
+      background-color: #f1f5f9 !important;
+      border-right: 1px solid #cbd5e1 !important;
     }
     
     body.theme-transparent main {
-      background-color: rgba(241, 245, 249, 0.6) !important;
+      background-color: #f8fafc !important;
     }
     
     body.theme-transparent header {
-      background-color: rgba(255, 255, 255, 0.8) !important;
+      background-color: rgba(255, 255, 255, 0.85) !important;
       backdrop-filter: blur(10px);
-      border-color: rgba(255, 255, 255, 0.4) !important;
+      border-bottom: 1px solid #cbd5e1 !important;
     }
     
-    body.theme-transparent .bg-slate-900,
-    body.theme-transparent div[class*="bg-slate-900"] {
-      background-color: rgba(255, 255, 255, 0.65) !important;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.8) !important;
-      box-shadow: 8px 8px 20px rgba(163, 177, 198, 0.4), -8px -8px 20px rgba(255, 255, 255, 0.8) !important;
+    /* Kartu / Kotak utama bergaya neumorphism terang */
+    body.theme-transparent .bg-slate-900 {
+      background-color: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05) !important;
       color: #0f172a !important;
     }
 
+    /* Warna teks di dalam tema transparan agar kontras dan jelas */
     body.theme-transparent h1, 
     body.theme-transparent h2, 
     body.theme-transparent h3, 
     body.theme-transparent h4, 
     body.theme-transparent p, 
-    body.theme-transparent span {
+    body.theme-transparent span,
+    body.theme-transparent label {
+      color: #1e293b !important;
+    }
+
+    body.theme-transparent .text-slate-400,
+    body.theme-transparent .text-slate-300 {
+      color: #64748b !important;
+    }
+
+    /* Input & Select Box agar ikut bergaya cekung */
+    body.theme-transparent input, 
+    body.theme-transparent select, 
+    body.theme-transparent textarea {
+      background-color: #f1f5f9 !important;
+      border: 1px solid #cbd5e1 !important;
       color: #0f172a !important;
     }
 
-    /* Efek Tombol: Teks awal biru, saat kursor diarahkan (hover) background jadi biru & teks jadi putih */
-    body.theme-transparent button:not(.bg-red-600):not([class*="emerald"]), 
+    /* Efek Tombol: Warna awal biru, saat kursor diarahkan (hover) menjadi biru terang & teks putih */
+    body.theme-transparent button:not([class*="bg-red"]):not([class*="bg-emerald"]), 
     body.theme-transparent .btn-touch {
-      color: #2563eb !important;
-      transition: all 0.3s ease-in-out;
+      background-color: #3b82f6 !important;
+      color: #ffffff !important;
+      transition: all 0.25s ease-in-out;
     }
 
-    body.theme-transparent button:not(.bg-red-600):not([class*="emerald"]):hover, 
+    body.theme-transparent button:not([class*="bg-red"]):not([class*="bg-emerald"]):hover, 
     body.theme-transparent .btn-touch:hover {
-      background-color: #0284c7 !important; /* Warna biru tombol saat kursor di atasnya */
-      color: #ffffff !important;           /* Teks berubah menjadi putih bersih */
-      border-color: #0ea5e9 !important;
-      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4) !important;
+      background-color: #2563eb !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
     }
 
     body.theme-transparent button:hover i, 
     body.theme-transparent .btn-touch:hover i {
       color: #ffffff !important;
     }
+    
   </style>
 
 </head>
