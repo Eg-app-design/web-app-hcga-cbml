@@ -278,61 +278,35 @@
 
 
 
-    /* ==================================================
-
+ /* ==================================================
        PILIHAN TEMA WARNA TAMPILAN (THEMES)
-
        ================================================== */
-
     /* 1. Default Dark (Midnight Slate Bawaan) */
-
     body.theme-default {
-
       background: radial-gradient(circle at top right, #0f172a, #020617) !important;
-
     }
-
-
 
     /* 2. Tema Biru Campuran (Ocean Deep) */
-
     body.theme-ocean {
-
       background: radial-gradient(circle at top right, #0a192f, #020c1b) !important;
-
     }
-
     body.theme-ocean aside {
-
       background-color: #0b1e36 !important;
-
       border-color: rgba(30, 58, 138, 0.4) !important;
-
     }
-
     body.theme-ocean main {
-
       background-color: #061224 !important;
-
     }
-
     body.theme-ocean header {
-
       background-color: rgba(11, 30, 54, 0.9) !important;
-
       border-color: rgba(30, 58, 138, 0.5) !important;
-
     }
-
     body.theme-ocean .bg-slate-900 {
-
       background-color: #0f2744 !important;
-
       border-color: rgba(30, 58, 138, 0.4) !important;
-
     }
 
-  /* 3. Tema Transparan (Background Putih Bersih & Teks Kontras Gelap) */
+    /* 3. Tema Transparan (Background Putih Bersih & Kotak Kategori Ungu) */
     body.theme-transparent {
       background: #ffffff !important;
       color: #0f172a !important;
@@ -344,7 +318,7 @@
     }
     
     body.theme-transparent main {
-      background-color: #ffffff !important;
+      background-color: #f8fafc !important;
     }
     
     body.theme-transparent header {
@@ -357,11 +331,11 @@
     body.theme-transparent .bg-slate-900 {
       background-color: #ffffff !important;
       border: 1px solid #e2e8f0 !important;
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -2px rgba(0, 0, 0, 0.05) !important;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
       color: #0f172a !important;
     }
 
-    /* Memaksa SEMUA teks yang sebelumnya putih/terang menjadi hitam atau gelap pekat */
+    /* Memaksa SEMUA teks menjadi hitam atau gelap pekat */
     body.theme-transparent h1, 
     body.theme-transparent h2, 
     body.theme-transparent h3, 
@@ -370,17 +344,20 @@
     body.theme-transparent td,
     body.theme-transparent label,
     body.theme-transparent span,
-    body.theme-transparent p,
-    body.theme-transparent div,
-    body.theme-transparent a {
+    body.theme-transparent p {
       color: #0f172a !important;
     }
 
-    /* Pengecualian khusus untuk teks sub-label atau keterangan agar tetap terbaca jelas (abu-abu gelap) */
-    body.theme-transparent .text-slate-400,
-    body.theme-transparent .text-slate-300,
-    body.theme-transparent p.text-xs {
-      color: #475569 !important;
+    /* KOTAK KATEGORI ASET: Berubah dari Abu-abu menjadi Ungu + Teks Putih */
+    body.theme-transparent #kategori-container > div,
+    body.theme-transparent div[class*="bg-slate-800/60"] {
+      background-color: #7c3aed !important;
+      border: 1px solid #6d28d9 !important;
+      color: #ffffff !important;
+    }
+    body.theme-transparent #kategori-container > div p,
+    body.theme-transparent #kategori-container > div h3 {
+      color: #ffffff !important;
     }
 
     /* Tabel agar kontras dan jelas */
@@ -405,19 +382,18 @@
       color: #0f172a !important;
     }
 
-    /* Tombol Aksi: Warna awal biru terang, saat kursor diarahkan (hover) menjadi biru pekat & teks putih */
-    body.theme-transparent button:not([class*="bg-red"]):not([class*="bg-emerald"]), 
+    /* TOMBOL AKSI: Warna normal, HANYA BERUBAH BIRU + TEKS PUTIH SAAT KURSOR DIARAHKAN (HOVER) */
+    body.theme-transparent button:not(.bg-red-600):not([class*="emerald"]), 
     body.theme-transparent .btn-touch {
-      background-color: #2563eb !important;
-      color: #ffffff !important;
       transition: all 0.25s ease-in-out;
     }
 
-    body.theme-transparent button:not([class*="bg-red"]):not([class*="bg-emerald"]):hover, 
+    body.theme-transparent button:not(.bg-red-600):not([class*="emerald"]):hover, 
     body.theme-transparent .btn-touch:hover {
-      background-color: #1d4ed8 !important;
+      background-color: #2563eb !important;
       color: #ffffff !important;
-      box-shadow: c 0 4px 12px rgba(37, 99, 235, 0.3) !important;
+      border-color: #1d4ed8 !important;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
     }
 
     body.theme-transparent button:hover i, 
@@ -430,8 +406,7 @@
 </head>
 
 <body class="theme-default text-slate-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-white">
-
-
+  
 
   <!-- ==================== VIEW LOGIN (FULLSCREEN & REFRESHED) ==================== -->
 
