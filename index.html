@@ -332,6 +332,64 @@
 
     }
 
+    /* 3. Tema Transparan (Glassmorphism & Tombol Interaktif Hover) */
+    body.theme-transparent {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%) !important;
+    }
+    body.theme-transparent aside {
+      background-color: rgba(15, 23, 42, 0.65) !important;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    body.theme-transparent main {
+      background-color: rgba(2, 6, 23, 0.5) !important;
+    }
+    body.theme-transparent header {
+      background-color: rgba(15, 23, 42, 0.75) !important;
+      backdrop-filter: blur(10px);
+      border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    body.theme-transparent .bg-slate-900 {
+      background-color: rgba(30, 41, 59, 0.55) !important;
+      backdrop-filter: blur(10px);
+      border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* Efek Tombol Khusus Tema Transparan: Biru saat kursor mendekat (hover), teks awal biru berubah jadi putih */
+    body.theme-transparent button:not([class*="bg-"]), 
+    body.theme-transparent .btn-interactive {
+      color: #38bdf8; /* Warna teks awal biru */
+      transition: all 0.25s ease-in-out;
+    }
+    body.theme-transparent button:not([class*="bg-"]):hover,
+    body.theme-transparent .btn-interactive:hover {
+      background-color: #2563eb !important; /* Warna latar tombol menjadi biru saat kursor diarahkan */
+      color: #ffffff !important;           /* Teks berubah menjadi putih saat kursor diarahkan */
+      border-color: #3b82f6 !important;
+    }
+
+    /* Efek hover tombol khusus HANYA saat body menggunakan tema transparan */
+    body.theme-transparent button, 
+    body.theme-transparent .btn-touch, 
+    body.theme-transparent a[class*="bg-"] {
+      transition: all 0.25s ease-in-out;
+    }
+
+    /* Saat kursor diarahkan (hover) pada tema transparan */
+    body.theme-transparent button:hover, 
+    body.theme-transparent .btn-touch:hover {
+      background-color: #2563eb !important; /* Latar belakang menjadi biru terang */
+      color: #ffffff !important;           /* Teks berubah menjadi putih */
+      border-color: #3b82f6 !important;    /* Border tombol menyesuaikan */
+    }
+
+    /* Jika tombol memiliki ikon di dalamnya, ikon ikut berubah menjadi putih */
+    body.theme-transparent button:hover i, 
+    body.theme-transparent .btn-touch:hover i {
+      color: #ffffff !important;
+    }
+
   </style>
 
 </head>
@@ -662,13 +720,11 @@
 
           <div class="relative">
 
-            <select id="theme-selector" onchange="changeAppTheme(this.value)" class="bg-slate-800/90 text-slate-200 border border-slate-700/80 rounded-xl px-3 py-1.5 text-xs font-medium outline-none focus:ring-2 focus:ring-cyan-500 cursor-pointer">
-
-              <option value="default">🌙 1. Dark Default</option>
-
-              <option value="ocean">🌊 2. Biru Campuran (Ocean)</option>
-
-            </select>
+           <select id="theme-selector" onchange="changeAppTheme(this.value)" class="bg-slate-800/90 text-slate-200 border border-slate-700/80 rounded-xl px-3 py-1.5 text-xs font-medium outline-none focus:ring-2 focus:ring-cyan-500 cursor-pointer">
+            <option value="default">🌙 1. Dark Default</option>
+            <option value="ocean">🌊 2. Biru Campuran (Ocean)</option>
+            <option value="transparent">✨ 3. Transparan Modern</option> <!-- Tambahan Opsi 3 -->
+          </select>
 
           </div>
 
@@ -2125,14 +2181,11 @@
 
     /* --- FUNGSI PILIHAN TEMA WARNA TAMPILAN --- */
 
-    function changeAppTheme(themeName) {
-
-      document.body.classList.remove('theme-default', 'theme-ocean', 'theme-skyline');
-
+function changeAppTheme(themeName) {
+      document.body.classList.remove('theme-default', 'theme-ocean', 'theme-transparent');
       document.body.classList.add('theme-' + themeName);
-
       localStorage.setItem('cbml_app_theme', themeName);
-
+      
     }
 
 
