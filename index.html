@@ -447,6 +447,29 @@
       background-color: transparent !important;
       box-shadow: none !important;
     }
+    /* Memaksa tombol atas agar konsisten dan memiliki jarak pembatas */
+    body.theme-transparent .flex.flex-wrap.items-center.justify-end.gap-2 button,
+    body.theme-transparent header button {
+      background: linear-gradient(to right, #2563eb, #06b6d4) !important;
+      color: #ffffff !important;
+      border: none !important;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1) !important;
+    }
+    
+    body.theme-transparent .flex.flex-wrap.items-center.justify-end.gap-2 button:hover,
+    body.theme-transparent header button:hover {
+      background: #1d4ed8 !important;
+      color: #ffffff !important;
+    }
+
+    /* Memaksa tombol ikon pada kolom AKSI tabel kembali transparan normal */
+    body.theme-transparent table td button,
+    body.theme-transparent table td button i {
+      background: transparent !important;
+      background-color: transparent !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
     
   </style>
   
