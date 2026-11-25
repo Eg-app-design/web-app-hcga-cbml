@@ -3451,7 +3451,7 @@ async function openPicHistory(kode) {
       }
     }
 
-  /* --- FUNGSI KHUSUS CETAK LABEL TEMPEL (LEBAR TETAP, PANJANG/TINGGI 18 MM, AUTO-SHRINK) --- */
+ /* --- FUNGSI KHUSUS CETAK LABEL TEMPEL (LEBAR TETAP, PANJANG/TINGGI 18 MM, AUTO-SHRINK) --- */
 function openStickerLabelPrintWindow(data) {
   const win = window.open('', '_blank');
   if (!win) { alert('Popup diblokir browser. Izinkan popup untuk mencetak label.'); return; }
@@ -3464,7 +3464,7 @@ function openStickerLabelPrintWindow(data) {
     let sizeClass = '';
     if (fullIdText.length > 34) {
       sizeClass = 'id-very-long';
-    } else if (fullIdText.length > 22) {
+    } else if (fullIdText.length > 24) {
       sizeClass = 'id-long';
     }
 
@@ -3493,15 +3493,15 @@ function openStickerLabelPrintWindow(data) {
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: Arial, Helvetica, sans-serif; padding: 6mm; background: #fff; color: #000; }
     .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm 4mm; justify-content: start; }
-    .sticker-card { border: 2px solid #000; border-radius: 9px; padding: 1.5mm 2.5mm; display: inline-flex; align-items: center; gap: 2mm; background: #fff; page-break-inside: avoid; break-inside: avoid; width: 100%; max-width: 65mm; height: 18mm; overflow: hidden; }
+    .sticker-card { border: 2px solid #000; border-radius: 9px; padding: 1.5mm 2.5mm; display: inline-flex; align-items: center; gap: 2.5mm; background: #fff; page-break-inside: avoid; break-inside: avoid; width: 100%; max-width: 65mm; height: 18mm; overflow: hidden; }
     .sticker-qr { flex-shrink: 0; width: 14mm; height: 14mm; display: flex; align-items: center; justify-content: center; }
     .sticker-qr img { width: 100%; height: 100%; object-fit: contain; }
-    .sticker-info { flex-grow: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; line-height: 1.12; overflow: hidden; }
-    .sticker-info .title { font-size: 8.5px; font-weight: 800; color: #000; white-space: nowrap; }
-    .sticker-info .asset-id { font-size: 7.2px; font-weight: 800; color: #000; margin: 0.5px 0; white-space: nowrap; letter-spacing: -0.1px; }
-    .sticker-info .asset-id.id-long { font-size: 5.8px; letter-spacing: -0.25px; }
-    .sticker-info .asset-id.id-very-long { font-size: 4.8px; letter-spacing: -0.35px; }
-    .sticker-info .sub-info { font-size: 6.5px; font-style: italic; color: #000; font-weight: 600; white-space: nowrap; }
+    .sticker-info { flex: 1 1 auto; width: 100%; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 0.8px; line-height: 1.15; overflow: hidden; }
+    .sticker-info .title { font-size: 9px; font-weight: 800; color: #000; white-space: nowrap; }
+    .sticker-info .asset-id { font-size: 7.6px; font-weight: 800; color: #000; white-space: nowrap; letter-spacing: -0.1px; }
+    .sticker-info .asset-id.id-long { font-size: 6px; letter-spacing: -0.25px; }
+    .sticker-info .asset-id.id-very-long { font-size: 4.9px; letter-spacing: -0.35px; }
+    .sticker-info .sub-info { font-size: 7px; font-style: italic; color: #000; font-weight: 600; white-space: nowrap; }
     @media print {
       @page { size: A4 portrait; margin: 5mm; }
       body { padding: 0; }
