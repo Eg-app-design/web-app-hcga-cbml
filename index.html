@@ -3498,7 +3498,7 @@ async function openPicHistory(kode) {
       }
     }
 
-/* --- FUNGSI KHUSUS CETAK LABEL TEMPEL (LEBAR 18 MM, TINGGI TETAP 24 MM) --- */
+   /* --- FUNGSI KHUSUS CETAK LABEL TEMPEL (LEBAR 18 MM, TINGGI TETAP 24 MM) --- */
 function openStickerLabelPrintWindow(data) {
   const win = window.open('', '_blank');
   if (!win) { alert('Popup diblokir browser. Izinkan popup untuk mencetak label.'); return; }
@@ -3575,8 +3575,7 @@ function openStickerLabelPrintWindow(data) {
 </html>`);
   win.document.close();
 }
-
- 
+    
     function printSingleQrLabel(kode) {
 
       const item = rawAssetsList.find(a => String(a['Kode Aset']) === String(kode));
