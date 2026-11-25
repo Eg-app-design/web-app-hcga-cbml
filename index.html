@@ -3560,7 +3560,7 @@ function openStickerLabelPrintWindow(data) {
 
 
 
-  /* --- FUNGSI KHUSUS CETAK LABEL STANDAR (3,5 CM x 4 CM, TANPA PT. CBML) --- */
+ /* --- FUNGSI KHUSUS CETAK LABEL STANDAR (3,5 CM x 4 CM, BINGKAI LEBIH RAPAT) --- */
     function openQrPrintWindow(data) {
       const win = window.open('', '_blank');
       if (!win) { alert('Popup diblokir browser. Izinkan popup untuk mencetak label QR.'); return; }
@@ -3590,7 +3590,7 @@ function openStickerLabelPrintWindow(data) {
       width: 35mm;
       height: 40mm;
       border: 1.5px solid #111;
-      border-radius: 5px;
+      border-radius: 2.5px;
       padding: 1.5mm;
       text-align: center;
       background: #fff;
@@ -3598,14 +3598,14 @@ function openStickerLabelPrintWindow(data) {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1.5mm;
+      gap: 1.2mm;
       page-break-inside: avoid;
       break-inside: avoid;
       overflow: hidden;
     }
-    .brand { font-size: 7.5px; font-weight: 800; letter-spacing: 0.3px; line-height: 1.1; white-space: nowrap; }
-    .label img { width: 18mm; height: 18mm; object-fit: contain; display: block; }
-    .code { font-size: 8px; font-weight: 800; line-height: 1.1; white-space: nowrap; }
+    .brand { font-size: 8.5px; font-weight: 800; letter-spacing: 0.3px; line-height: 1.1; white-space: nowrap; }
+    .label img { width: 21mm; height: 21mm; object-fit: contain; display: block; }
+    .code { font-size: 8.5px; font-weight: 800; line-height: 1.1; white-space: nowrap; }
     @media print {
       @page { size: A4 portrait; margin: 5mm; }
       body { padding: 0; }
@@ -3633,7 +3633,6 @@ function openStickerLabelPrintWindow(data) {
       win.document.close();
       auditClientEvent('PRINT_QR_LABEL', 'Jumlah label: ' + data.length);
     }
-
 
     function csvCell(value) {
 
