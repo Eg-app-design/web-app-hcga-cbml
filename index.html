@@ -3355,63 +3355,27 @@ async function openPicHistory(kode) {
     }
 
 
-
     function makeAsetId(asset) {
-
-      const nama = String(asset['Nama Aset'] || 'ASET').trim()
-
+      const merk = String(asset['Merk'] || '').trim()
         .toUpperCase()
-
         .replace(/[^A-Z0-9]+/g, '_')
+        .replace(/^_+|_+$/g, '');
 
+      const model = String(asset['Model'] || '').trim()
+        .toUpperCase()
+        .replace(/[^A-Z0-9]+/g, '_')
+        .replace(/^_+|_+$/g, '');
+
+      const kategori = String(asset['Kategori'] || 'ASET').trim()
+        .toUpperCase()
+        .replace(/[^A-Z0-9]+/g, '_')
         .replace(/^_+|_+$/g, '') || 'ASET';
 
-      const rawDate = asset['Tanggal Penyerahan'] || asset['Tanggal Serah'] || '';
-
-      let date = null;
-
-      if (rawDate instanceof Date && !isNaN(rawDate.getTime())) {
-
-        date = rawDate;
-
-      } else {
-
-        const value = String(rawDate).trim();
-
-        let m = value.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
-
-        if (m) date = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
-
-        if (!date) {
-
-          m = value.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{4})$/);
-
-          if (m) date = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]));
-
-        }
-
-        if (!date && value) {
-
-          const parsed = new Date(value);
-
-          if (!isNaN(parsed.getTime())) date = parsed;
-
-        }
-
-      }
-
-      const monthYear = date && !isNaN(date.getTime())
-
-        ? String(date.getMonth() + 1).padStart(2, '0') + '-' + String(date.getFullYear()).slice(-2)
-
-        : 'MM-YY';
-
+      const merkModel = [merk, model].filter(Boolean).join('_') || kategori;
       const kode = String(asset['Kode Aset'] == null ? '' : asset['Kode Aset']).trim() || '-';
 
-      return 'CBML/GA/' + nama + '/' + monthYear + '/' + kode;
-
+      return 'CBML/GA/' + merkModel + '/' + kode;
     }
-
 
 
     function qrImageUrl(asset) {
@@ -3533,10 +3497,10 @@ function openStickerLabelPrintWindow(data) {
     .sticker-card { border: 2px solid #000; border-radius: 9px; padding: 2mm 3mm; display: inline-flex; align-items: center; gap: 2.5mm; background: #fff; page-break-inside: avoid; break-inside: avoid; width: 100%; max-width: 65mm; height: 18mm; overflow: hidden; }
     .sticker-qr { flex-shrink: 0; width: 14mm; height: 14mm; display: flex; align-items: center; justify-content: center; }
     .sticker-qr img { width: 100%; height: 100%; object-fit: contain; }
-    .sticker-info { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; line-height: 1.15; overflow: hidden; white-space: nowrap; }
-    .sticker-info .title { font-size: 9px; font-weight: 800; color: #000; }
-    .sticker-info .asset-id { font-size: 8px; font-weight: 800; color: #000; margin: 1px 0; overflow: hidden; text-overflow: ellipsis; }
-    .sticker-info .sub-info { font-size: 7px; font-style: italic; color: #000; font-weight: 600; }
+   .sticker-info { flex-grow: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; line-height: 1.08; overflow: hidden; }
+    .sticker-info .title { font-size: 8px; font-weight: 800; color: #000; white-space: nowrap; }
+    .sticker-info .asset-id { font-size: 5.5px; font-weight: 800; color: #000; margin: 0.5px 0; white-space: normal; overflow-wrap: anywhere; word-break: break-word; }
+    .sticker-info .sub-info { font-size: 6.2px; font-style: italic; color: #000; font-weight: 600; white-space: nowrap; }
     @media print {
       @page { size: A4 portrait; margin: 5mm; }
       body { padding: 0; }
