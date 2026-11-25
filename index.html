@@ -3498,7 +3498,7 @@ async function openPicHistory(kode) {
       }
     }
 
-    /* --- FUNGSI KHUSUS CETAK LABEL TEMPEL KECIL (PRESISI & PAS) --- */
+/* --- FUNGSI KHUSUS CETAK LABEL TEMPEL (LEBAR 18 MM, TINGGI TETAP 24 MM) --- */
 function openStickerLabelPrintWindow(data) {
   const win = window.open('', '_blank');
   if (!win) { alert('Popup diblokir browser. Izinkan popup untuk mencetak label.'); return; }
@@ -3511,14 +3511,70 @@ function openStickerLabelPrintWindow(data) {
           <img src="${qrImageUrl(a)}" alt="QR Code ${escapeHTML(a['Kode Aset'])}">
         </div>
         <div class="sticker-info">
-          <div class="title">PT. CBML · QR Code</div>
-          <div class="asset-id">ASET ID: ${escapeHTML(assetId)}</div>
-          <div class="sub-info">HCGA : Site Adaro Indonesia</div>
-          <div class="sub-info">hrga.adr@cbml.co.id</div>
+          <div class="title">PT. CBML</div>
+          <div class="asset-id">${escapeHTML(assetId)}</div>
+          <div class="sub-info">HCGA Adaro</div>
         </div>
       </div>
     `;
   }).join('');
+
+  win.document.open();
+  win.document.write(`<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Cetak Label Tempel Aset CBML (18mm)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; padding: 5mm; background: #fff; color: #000; }
+    .grid-container { display: flex; flex-wrap: wrap; gap: 2mm; align-items: flex-start; }
+    .sticker-card {
+      border: 1.5px solid #000;
+      border-radius: 3px;
+      padding: 1mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      width: 18mm;
+      max-width: 18mm;
+      height: 24mm;
+      overflow: hidden;
+      text-align: center;
+    }
+    .sticker-qr { width: 11mm; height: 11mm; display: flex; align-items: center; justify-content: center; }
+    .sticker-qr img { width: 100%; height: 100%; object-fit: contain; }
+    .sticker-info { width: 100%; display: flex; flex-direction: column; line-height: 1.1; overflow: hidden; }
+    .sticker-info .title { font-size: 5.5px; font-weight: 800; color: #000; }
+    .sticker-info .asset-id { font-size: 4.5px; font-weight: 700; color: #000; margin: 0.5px 0; word-break: break-all; }
+    .sticker-info .sub-info { font-size: 4.5px; font-style: italic; color: #000; }
+    @media print {
+      @page { size: A4 portrait; margin: 5mm; }
+      body { padding: 0; }
+      .grid-container { gap: 2mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    ${stickers}
+  </div>
+  <script>
+    window.onload = () => {
+      const imgs = [...document.images];
+      Promise.all(imgs.map(i => i.complete ? Promise.resolve() : new Promise(r => { i.onload = r; i.onerror = r; }))).then(() => {
+        setTimeout(() => window.print(), 300);
+      });
+    };
+  <\/script>
+</body>
+</html>`);
+  win.document.close();
+}
 
   win.document.open();
   win.document.write(`<!doctype html>
