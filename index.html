@@ -3560,14 +3560,14 @@ function openStickerLabelPrintWindow(data) {
 
 
 
-   /* --- FUNGSI KHUSUS CETAK LABEL STANDAR (SAMPAI KODE ASET, TINGGI MENYESUAIKAN) --- */
+  /* --- FUNGSI KHUSUS CETAK LABEL STANDAR (3,5 CM x 4 CM, TANPA PT. CBML) --- */
     function openQrPrintWindow(data) {
       const win = window.open('', '_blank');
       if (!win) { alert('Popup diblokir browser. Izinkan popup untuk mencetak label QR.'); return; }
 
       const labels = data.map(a => `
         <article class="label">
-          <div class="brand">PT. CBML · LABEL ASET</div>
+          <div class="brand">LABEL ASET</div>
           <img src="${qrImageUrl(a)}" alt="QR Code ${escapeHTML(a['Kode Aset'])}">
           <div class="code">KODE: ${escapeHTML(a['Kode Aset'])}</div>
         </article>
@@ -3585,13 +3585,13 @@ function openStickerLabelPrintWindow(data) {
     .header-info { margin-bottom: 4mm; }
     .header-info h2 { font-size: 13px; margin-bottom: 1mm; }
     .header-info p { font-size: 9px; color: #555; }
-    .grid { display: flex; flex-wrap: wrap; gap: 3mm; align-items: flex-start; }
+    .grid { display: flex; flex-wrap: wrap; gap: 1.5mm; align-items: flex-start; }
     .label {
       width: 35mm;
-      height: 27mm;
+      height: 40mm;
       border: 1.5px solid #111;
       border-radius: 5px;
-      padding: 2mm;
+      padding: 1.5mm;
       text-align: center;
       background: #fff;
       display: flex;
@@ -3603,14 +3603,14 @@ function openStickerLabelPrintWindow(data) {
       break-inside: avoid;
       overflow: hidden;
     }
-    .brand { font-size: 6.5px; font-weight: 800; letter-spacing: 0.2px; line-height: 1.1; white-space: nowrap; }
-    .label img { width: 15mm; height: 15mm; object-fit: contain; display: block; }
-    .code { font-size: 7.5px; font-weight: 800; line-height: 1.1; white-space: nowrap; }
+    .brand { font-size: 7.5px; font-weight: 800; letter-spacing: 0.3px; line-height: 1.1; white-space: nowrap; }
+    .label img { width: 18mm; height: 18mm; object-fit: contain; display: block; }
+    .code { font-size: 8px; font-weight: 800; line-height: 1.1; white-space: nowrap; }
     @media print {
       @page { size: A4 portrait; margin: 5mm; }
       body { padding: 0; }
       .header-info { display: none; }
-      .grid { gap: 2.5mm; }
+      .grid { gap: 1.5mm; }
     }
   </style>
 </head>
@@ -3633,7 +3633,6 @@ function openStickerLabelPrintWindow(data) {
       win.document.close();
       auditClientEvent('PRINT_QR_LABEL', 'Jumlah label: ' + data.length);
     }
-
 
 
     function csvCell(value) {
