@@ -3498,7 +3498,7 @@ async function openPicHistory(kode) {
       }
     }
 
-   /* --- FUNGSI KHUSUS CETAK LABEL TEMPEL (LEBAR 18 MM, TINGGI TETAP 24 MM) --- */
+  /* --- FUNGSI KHUSUS CETAK LABEL TEMPEL (LEBAR TETAP, PANJANG/TINGGI 18 MM) --- */
 function openStickerLabelPrintWindow(data) {
   const win = window.open('', '_blank');
   if (!win) { alert('Popup diblokir browser. Izinkan popup untuk mencetak label.'); return; }
@@ -3511,9 +3511,10 @@ function openStickerLabelPrintWindow(data) {
           <img src="${qrImageUrl(a)}" alt="QR Code ${escapeHTML(a['Kode Aset'])}">
         </div>
         <div class="sticker-info">
-          <div class="title">PT. CBML</div>
-          <div class="asset-id">${escapeHTML(assetId)}</div>
-          <div class="sub-info">HCGA Adaro</div>
+          <div class="title">PT. CBML · QR Code</div>
+          <div class="asset-id">ASET ID: ${escapeHTML(assetId)}</div>
+          <div class="sub-info">HCGA : Site Adaro Indonesia</div>
+          <div class="sub-info">hrga.adr@cbml.co.id</div>
         </div>
       </div>
     `;
@@ -3524,38 +3525,23 @@ function openStickerLabelPrintWindow(data) {
 <html lang="id">
 <head>
   <meta charset="utf-8">
-  <title>Cetak Label Tempel Aset CBML (18mm)</title>
+  <title>Cetak Label Tempel Aset CBML</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, Helvetica, sans-serif; padding: 5mm; background: #fff; color: #000; }
-    .grid-container { display: flex; flex-wrap: wrap; gap: 2mm; align-items: flex-start; }
-    .sticker-card {
-      border: 1.5px solid #000;
-      border-radius: 3px;
-      padding: 1mm;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      background: #fff;
-      page-break-inside: avoid;
-      break-inside: avoid;
-      width: 18mm;
-      max-width: 18mm;
-      height: 24mm;
-      overflow: hidden;
-      text-align: center;
-    }
-    .sticker-qr { width: 11mm; height: 11mm; display: flex; align-items: center; justify-content: center; }
+    body { font-family: Arial, Helvetica, sans-serif; padding: 6mm; background: #fff; color: #000; }
+    .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm 4mm; justify-content: start; }
+    .sticker-card { border: 2px solid #000; border-radius: 9px; padding: 2mm 3mm; display: inline-flex; align-items: center; gap: 2.5mm; background: #fff; page-break-inside: avoid; break-inside: avoid; width: 100%; max-width: 65mm; height: 18mm; overflow: hidden; }
+    .sticker-qr { flex-shrink: 0; width: 14mm; height: 14mm; display: flex; align-items: center; justify-content: center; }
     .sticker-qr img { width: 100%; height: 100%; object-fit: contain; }
-    .sticker-info { width: 100%; display: flex; flex-direction: column; line-height: 1.1; overflow: hidden; }
-    .sticker-info .title { font-size: 5.5px; font-weight: 800; color: #000; }
-    .sticker-info .asset-id { font-size: 4.5px; font-weight: 700; color: #000; margin: 0.5px 0; word-break: break-all; }
-    .sticker-info .sub-info { font-size: 4.5px; font-style: italic; color: #000; }
+    .sticker-info { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; line-height: 1.15; overflow: hidden; white-space: nowrap; }
+    .sticker-info .title { font-size: 9px; font-weight: 800; color: #000; }
+    .sticker-info .asset-id { font-size: 8px; font-weight: 800; color: #000; margin: 1px 0; overflow: hidden; text-overflow: ellipsis; }
+    .sticker-info .sub-info { font-size: 7px; font-style: italic; color: #000; font-weight: 600; }
     @media print {
       @page { size: A4 portrait; margin: 5mm; }
       body { padding: 0; }
-      .grid-container { gap: 2mm; }
+      .grid-container { gap: 3mm 3.5mm; }
+      .sticker-card { border-width: 1.8px; }
     }
   </style>
 </head>
