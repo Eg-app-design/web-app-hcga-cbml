@@ -3451,7 +3451,7 @@ async function openPicHistory(kode) {
       }
     }
 
-/* --- FUNGSI KHUSUS CETAK LABEL TEMPEL (LEBAR TETAP, PANJANG/TINGGI 18 MM, FORMAT BARU) --- */
+/* --- FUNGSI KHUSUS CETAK LABEL TEMPEL (LEBAR TETAP, PANJANG/TINGGI 18 MM, UKURAN SERAGAM) --- */
 function openStickerLabelPrintWindow(data) {
   const win = window.open('', '_blank');
   if (!win) { alert('Popup diblokir browser. Izinkan popup untuk mencetak label.'); return; }
@@ -3487,13 +3487,6 @@ function openStickerLabelPrintWindow(data) {
     const kode = String(a['Kode Aset'] == null ? '' : a['Kode Aset']).trim() || '-';
     const stickerIdCode = 'CBML/GA/' + kategori + '/' + monthYear + '/' + kode;
 
-    let sizeClass = '';
-    if (stickerIdCode.length > 34) {
-      sizeClass = 'id-very-long';
-    } else if (stickerIdCode.length > 26) {
-      sizeClass = 'id-long';
-    }
-
     return `
       <div class="sticker-card">
         <div class="sticker-qr">
@@ -3502,7 +3495,7 @@ function openStickerLabelPrintWindow(data) {
         <div class="sticker-info">
           <div class="title">PT.CBML - QR</div>
           <div class="id-label">ASET ID :</div>
-          <div class="asset-id ${sizeClass}">${escapeHTML(stickerIdCode)}</div>
+          <div class="asset-id">${escapeHTML(stickerIdCode)}</div>
           <div class="sub-info">HCGA : Site Adaro Indonesia</div>
           <div class="sub-info">hrga.ard@cbml.co.id</div>
         </div>
@@ -3526,9 +3519,7 @@ function openStickerLabelPrintWindow(data) {
     .sticker-info { flex: 1 1 auto; width: 100%; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 0.4px; line-height: 1.08; overflow: hidden; }
     .sticker-info .title { font-size: 8.2px; font-weight: 800; color: #000; white-space: nowrap; }
     .sticker-info .id-label { font-size: 6.2px; font-weight: 800; color: #000; white-space: nowrap; }
-    .sticker-info .asset-id { font-size: 8.2px; font-weight: 800; color: #000; white-space: nowrap; letter-spacing: -0.15px; }
-    .sticker-info .asset-id.id-long { font-size: 6.2px; letter-spacing: -0.25px; }
-    .sticker-info .asset-id.id-very-long { font-size: 5px; letter-spacing: -0.35px; }
+    .sticker-info .asset-id { font-size: 7.4px; font-weight: 800; color: #000; white-space: nowrap; letter-spacing: -0.15px; }
     .sticker-info .sub-info { font-size: 6.2px; font-style: italic; color: #000; font-weight: 600; white-space: nowrap; }
     @media print {
       @page { size: A4 portrait; margin: 5mm; }
@@ -3554,7 +3545,7 @@ function openStickerLabelPrintWindow(data) {
 </html>`);
   win.document.close();
 }
-    
+
     function printSingleQrLabel(kode) {
 
       const item = rawAssetsList.find(a => String(a['Kode Aset']) === String(kode));
