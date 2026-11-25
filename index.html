@@ -3516,12 +3516,13 @@ function openStickerLabelPrintWindow(data) {
     .sticker-card { border: 2px solid #000; border-radius: 9px; padding: 1.5mm 2.5mm; display: inline-flex; align-items: center; gap: 2mm; background: #fff; page-break-inside: avoid; break-inside: avoid; width: 100%; max-width: 65mm; height: 18mm; overflow: hidden; }
     .sticker-qr { flex-shrink: 0; width: 14mm; height: 14mm; display: flex; align-items: center; justify-content: center; }
     .sticker-qr img { width: 100%; height: 100%; object-fit: contain; }
-    .sticker-info { flex: 1 1 auto; width: 100%; min-width: 0; height: 14mm; display: flex; flex-direction: column; justify-content: center; gap: 0.6px; line-height: 1; overflow: hidden; }
+    .sticker-info { flex: 1 1 auto; width: 100%; min-width: 0; height: 14mm; display: flex; flex-direction: column; justify-content: center; gap: 1px; line-height: 1.08; overflow: hidden; }
     .sticker-info .title,
     .sticker-info .id-label,
-    .sticker-info .asset-id { font-size: 9.5px; font-weight: 800; color: #000; white-space: nowrap; }
-    .sticker-info .asset-id { letter-spacing: -0.45px; }
-    .sticker-info .sub-info { font-size: 5.8px; font-style: italic; color: #000; font-weight: 600; white-space: nowrap; transform: translateY(-0.8mm); }
+    .sticker-info .asset-id { font-size: 8.6px; font-weight: 800; color: #000; white-space: nowrap; }
+    .sticker-info .asset-id { letter-spacing: -0.4px; }
+    .sticker-info .sub-info { font-size: 5.8px; font-style: italic; color: #000; font-weight: 600; white-space: nowrap; line-height: 1.1; }
+    .sticker-info .sub-info:first-of-type { margin-top: 0.8px; }
     @media print {
       @page { size: A4 portrait; margin: 5mm; }
       body { padding: 0; }
@@ -3546,8 +3547,7 @@ function openStickerLabelPrintWindow(data) {
 </html>`);
   win.document.close();
 }
-
-
+    
     function printSingleQrLabel(kode) {
 
       const item = rawAssetsList.find(a => String(a['Kode Aset']) === String(kode));
