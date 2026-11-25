@@ -3355,26 +3355,15 @@ async function openPicHistory(kode) {
     }
 
 
-    function makeAsetId(asset) {
-      const merk = String(asset['Merk'] || '').trim()
-        .toUpperCase()
-        .replace(/[^A-Z0-9]+/g, '_')
-        .replace(/^_+|_+$/g, '');
-
-      const model = String(asset['Model'] || '').trim()
-        .toUpperCase()
-        .replace(/[^A-Z0-9]+/g, '_')
-        .replace(/^_+|_+$/g, '');
-
+   function makeAsetId(asset) {
       const kategori = String(asset['Kategori'] || 'ASET').trim()
         .toUpperCase()
         .replace(/[^A-Z0-9]+/g, '_')
         .replace(/^_+|_+$/g, '') || 'ASET';
 
-      const merkModel = [merk, model].filter(Boolean).join('_') || kategori;
       const kode = String(asset['Kode Aset'] == null ? '' : asset['Kode Aset']).trim() || '-';
 
-      return 'CBML/GA/' + merkModel + '/' + kode;
+      return 'CBML/GA/' + kategori + '/' + kode;
     }
 
 
