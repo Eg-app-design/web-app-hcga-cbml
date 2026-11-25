@@ -3539,22 +3539,84 @@ function openStickerLabelPrintWindow(data) {
 
 
 
+    /* --- FUNGSI KHUSUS CETAK LABEL STANDAR (LEBAR 35 MM / 3,5 CM, TINGGI 40 MM / 4 CM) --- */
     function openQrPrintWindow(data) {
-
       const win = window.open('', '_blank');
-
       if (!win) { alert('Popup diblokir browser. Izinkan popup untuk mencetak label QR.'); return; }
 
-      const labels = data.map(a => `<article class="label"><div class="brand">PT. CBML · LABEL ASET</div><img src="${qrImageUrl(a)}" alt="QR Code ${escapeHTML(a['Kode Aset'])}"><div class="code">KODE ASET: ${escapeHTML(a['Kode Aset'])}</div><div class="name">${escapeHTML(a['Nama Aset'] || '-')}</div><div class="asset-id">ASET ID: ${escapeHTML(makeAsetId(a))}</div><div class="meta">PIC: ${escapeHTML(a['PIC Barang'] || '-')}</div><div class="meta">Lokasi: ${escapeHTML(a['Lokasi'] || '-')}</div></article>`).join('');
+      const labels = data.map(a => `
+        <article class="label">
+          <div class="brand">PT. CBML · LABEL ASET</div>
+          <img src="${qrImageUrl(a)}" alt="QR Code ${escapeHTML(a['Kode Aset'])}">
+          <div class="code">KODE: ${escapeHTML(a['Kode Aset'])}</div>
+          <div class="name">${escapeHTML(a['Nama Aset'] || '-')}</div>
+          <div class="asset-id">${escapeHTML(makeAsetId(a))}</div>
+          <div class="meta">PIC: ${escapeHTML(a['PIC Barang'] || '-')}</div>
+          <div class="meta">Lok: ${escapeHTML(a['Lokasi'] || '-')}</div>
+        </article>
+      `).join('');
 
       win.document.open();
-
-      win.document.write(`<!doctype html><html lang="id"><head><meta charset="utf-8"><title>Label QR Aset CBML</title><style>body{font-family:Arial,sans-serif;margin:10mm;color:#111}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8mm}.label{border:1px solid #888;border-radius:5px;padding:4mm;text-align:center;break-inside:avoid;min-height:54mm}.brand{font-size:9px;font-weight:bold;letter-spacing:.5px}.label img{width:30mm;height:30mm;display:block;margin:2mm auto}.code{font-size:11px;font-weight:bold}.name{font-size:10px;font-weight:bold;margin-top:2mm}.asset-id{font-size:8px;font-weight:bold;margin-top:1.5mm;overflow-wrap:anywhere;word-break:break-word}.meta{font-size:8px;margin-top:1mm;overflow-wrap:anywhere}@media print{@page{size:A4;margin:8mm}.grid{gap:5mm}.label{padding:3mm}}</style></head><body><h2>Label QR Code Aset CBML</h2><p>Jumlah label: ${data.length}. QR membuka aplikasi dan meminta login sebelum detail aset ditampilkan.</p><div class="grid">${labels}</div><script>window.onload=()=>{const imgs=[...document.images];Promise.all(imgs.map(i=>i.complete?Promise.resolve():new Promise(r=>{i.onload=r;i.onerror=r}))).then(()=>setTimeout(()=>window.print(),300));};<\/script></body></html>`);
-
+      win.document.write(`<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Label QR Aset CBML (3.5x4 cm)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; padding: 6mm; color: #111; background: #fff; }
+    .header-info { margin-bottom: 4mm; }
+    .header-info h2 { font-size: 13px; margin-bottom: 1mm; }
+    .header-info p { font-size: 9px; color: #555; }
+    .grid { display: flex; flex-wrap: wrap; gap: 3mm; align-items: flex-start; }
+    .label {
+      width: 35mm;
+      height: 40mm;
+      border: 1px solid #333;
+      border-radius: 3px;
+      padding: 1.5mm;
+      text-align: center;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      overflow: hidden;
+    }
+    .brand { font-size: 6px; font-weight: 800; letter-spacing: 0.2px; line-height: 1.1; white-space: nowrap; }
+    .label img { width: 15mm; height: 15mm; object-fit: contain; display: block; }
+    .code { font-size: 6.5px; font-weight: 800; line-height: 1.1; white-space: nowrap; }
+    .name { font-size: 6px; font-weight: 700; line-height: 1.1; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .asset-id { font-size: 5px; font-weight: 700; line-height: 1.1; width: 100%; overflow-wrap: anywhere; word-break: break-word; }
+    .meta { font-size: 5px; line-height: 1.1; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    @media print {
+      @page { size: A4 portrait; margin: 5mm; }
+      body { padding: 0; }
+      .header-info { display: none; }
+      .grid { gap: 2.5mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-info">
+    <h2>Label QR Code Aset CBML (3,5 cm × 4 cm)</h2>
+    <p>Jumlah label: ${data.length}. QR membuka aplikasi dan meminta login sebelum detail aset ditampilkan.</p>
+  </div>
+  <div class="grid">${labels}</div>
+  <script>
+    window.onload = () => {
+      const imgs = [...document.images];
+      Promise.all(imgs.map(i => i.complete ? Promise.resolve() : new Promise(r => { i.onload = r; i.onerror = r; }))).then(() => {
+        setTimeout(() => window.print(), 300);
+      });
+    };
+  <\/script>
+</body>
+</html>`);
       win.document.close();
-
       auditClientEvent('PRINT_QR_LABEL', 'Jumlah label: ' + data.length);
-
     }
 
 
