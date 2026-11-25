@@ -3560,7 +3560,7 @@ function openStickerLabelPrintWindow(data) {
 
 
 
- /* --- FUNGSI KHUSUS CETAK LABEL STANDAR (3,5 CM x 4 CM, BINGKAI LEBIH RAPAT) --- */
+ /* --- FUNGSI KHUSUS CETAK LABEL STANDAR (BINGKAI MENYESUAIKAN ISI & QR RAPI) --- */
     function openQrPrintWindow(data) {
       const win = window.open('', '_blank');
       if (!win) { alert('Popup diblokir browser. Izinkan popup untuk mencetak label QR.'); return; }
@@ -3585,32 +3585,32 @@ function openStickerLabelPrintWindow(data) {
     .header-info { margin-bottom: 4mm; }
     .header-info h2 { font-size: 13px; margin-bottom: 1mm; }
     .header-info p { font-size: 9px; color: #555; }
-    .grid { display: flex; flex-wrap: wrap; gap: 1.5mm; align-items: flex-start; }
+    .grid { display: flex; flex-wrap: wrap; gap: 2mm; align-items: flex-start; }
     .label {
-      width: 35mm;
-      height: 40mm;
+      width: fit-content;
+      min-width: 28mm;
+      height: auto;
       border: 1.5px solid #111;
-      border-radius: 2.5px;
-      padding: 1.5mm;
+      border-radius: 3px;
+      padding: 1.5mm 2.2mm;
       text-align: center;
       background: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1.2mm;
+      gap: 1mm;
       page-break-inside: avoid;
       break-inside: avoid;
-      overflow: hidden;
     }
     .brand { font-size: 8.5px; font-weight: 800; letter-spacing: 0.3px; line-height: 1.1; white-space: nowrap; }
-    .label img { width: 21mm; height: 21mm; object-fit: contain; display: block; }
-    .code { font-size: 8.5px; font-weight: 800; line-height: 1.1; white-space: nowrap; }
+    .label img { width: 24mm; height: 24mm; object-fit: contain; display: block; }
+    .code { font-size: 9px; font-weight: 800; line-height: 1.1; white-space: nowrap; }
     @media print {
       @page { size: A4 portrait; margin: 5mm; }
       body { padding: 0; }
       .header-info { display: none; }
-      .grid { gap: 1.5mm; }
+      .grid { gap: 2mm; }
     }
   </style>
 </head>
@@ -3634,6 +3634,7 @@ function openStickerLabelPrintWindow(data) {
       auditClientEvent('PRINT_QR_LABEL', 'Jumlah label: ' + data.length);
     }
 
+    
     function csvCell(value) {
 
       let s = String(value == null ? '' : value);
