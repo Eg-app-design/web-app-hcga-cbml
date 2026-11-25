@@ -3486,10 +3486,10 @@ function openStickerLabelPrintWindow(data) {
     .sticker-card { border: 2px solid #000; border-radius: 9px; padding: 2mm 3mm; display: inline-flex; align-items: center; gap: 2.5mm; background: #fff; page-break-inside: avoid; break-inside: avoid; width: 100%; max-width: 65mm; height: 18mm; overflow: hidden; }
     .sticker-qr { flex-shrink: 0; width: 14mm; height: 14mm; display: flex; align-items: center; justify-content: center; }
     .sticker-qr img { width: 100%; height: 100%; object-fit: contain; }
-   .sticker-info { flex-grow: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; line-height: 1.08; overflow: hidden; }
-    .sticker-info .title { font-size: 8px; font-weight: 800; color: #000; white-space: nowrap; }
-    .sticker-info .asset-id { font-size: 5.5px; font-weight: 800; color: #000; margin: 0.5px 0; white-space: normal; overflow-wrap: anywhere; word-break: break-word; }
-    .sticker-info .sub-info { font-size: 6.2px; font-style: italic; color: #000; font-weight: 600; white-space: nowrap; }
+    .sticker-info { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; line-height: 1.2; overflow: hidden; white-space: nowrap; }
+    .sticker-info .title { font-size: 9.5px; font-weight: 800; color: #000; }
+    .sticker-info .asset-id { font-size: 8.5px; font-weight: 800; color: #000; margin: 1px 0; overflow: hidden; text-overflow: ellipsis; }
+    .sticker-info .sub-info { font-size: 7.5px; font-style: italic; color: #000; font-weight: 600; }
     @media print {
       @page { size: A4 portrait; margin: 5mm; }
       body { padding: 0; }
